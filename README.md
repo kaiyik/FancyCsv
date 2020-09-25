@@ -3,4 +3,4 @@ To run,
 
 python3 csvmain.py 
 
-Test is included at the end of the test
+Test is included at the end of the program
