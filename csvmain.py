@@ -29,13 +29,16 @@ class FancyText:
         print(output)
         return output
     
-    def convertStringToCSV(self):
+    def convertStringToCSV(self, test=False):
         output = str()
         for character in self.InputString:
             output += character
             output += ','
         output = output[:-1]
-        f = open("csvfile.csv", "w")
+        if test is False:
+            f = open("csvfile.csv", "w")
+        else:
+            f = open('csvfiletesting.csv', 'w')
         f.write(output)
         f.close()
         print("CSV created!")
@@ -67,8 +70,8 @@ class TextTestCase(unittest.TestCase):
                 lowercaseIsTrue = not lowercaseIsTrue
     
     def test_convertStringToCSV(self):
-        self.text.convertStringToCSV()
-        with open('csvfile.csv', 'r') as file:
+        self.text.convertStringToCSV(test=True)
+        with open('csvfiletesting.csv', 'r') as file:
             data = file.read()
         noComma = True
         for character in data:
